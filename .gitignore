@@ -15,3 +15,6 @@ env.rb
 
 # Ignore local rbenv version file
 .ruby-version
+
+# Ignoring Gemfile.lock
+Gemfile.lock
