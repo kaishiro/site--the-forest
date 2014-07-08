@@ -12,3 +12,6 @@
 
 # Ignore local ENV vars
 env.rb
+
+# Ignore local rbenv version file
+.ruby-version
