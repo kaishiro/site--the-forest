@@ -1,7 +1,8 @@
 <div class="scripts">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/javascripts/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/javascripts/vendor/jquery-1.11.1.js"><\/script>')</script>
   <%= javascript_include_tag  "all" %>
+  <%= javascript_include_tag  "toggle" %>
   <%= javascript_include_tag  "search" %>
   <%= yield_content :javascripts %>
 </div>
