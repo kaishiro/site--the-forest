@@ -1,5 +1,7 @@
-<link href='/images/icons/apple-touch-icon-144x144-precomposed.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
-<link href='/images/icons/apple-touch-icon-114x114-precomposed.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
-<link href='/images/icons/apple-touch-icon-72x72-precomposed.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
-<link href='/images/icons/apple-touch-icon-57x57-precomposed.png' rel='apple-touch-icon-precomposed'>
-<link href='/images/icons/favicon.png' rel='shortcut icon'>
+<% [144,114,72,57].each do | i | %>
+
+  <%= tag :link, :href => "/images/icons/apple-touch-icon-#{i}x#{i}-precomposed.png", :rel => 'apple-touch-icon-precomposed', :sizes => "#{i}x#{i}" %>
+
+<% end %>
+
+<%= favicon_tag '/images/icons/favicon.png' %>
