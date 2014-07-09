@@ -17,13 +17,17 @@
 
     <header class="header" role="banner">
 
-      <%= partial "partials/components/logo" %>
-
       <%= partial "partials/components/toggle--navigation" %>
 
-      <%= partial "partials/components/navigation--primary" %>
+      <%= partial "partials/components/logo" %>
+
+      <%= partial "partials/components/toggle--search" %>
+
+      <%= partial "partials/components/search" %>
 
     </header>
+
+    <%= partial "partials/components/navigation--primary" %>
 
     <%= yield %>
 
