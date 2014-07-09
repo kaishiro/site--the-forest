@@ -3,14 +3,20 @@
 <%= partial "partials/html" %>
 
   <head>
-    <meta charset="utf-8">
-
-    <title><%= page_title %></title>
-
+    <!-- Meta -->
     <%= partial "partials/head/meta" %>
-    <%= partial "partials/head/css" %>
-    <%= partial "partials/head/js" %>
+
+    <!-- Title -->
+    <%= partial "partials/head/title" %>
+
+    <!-- Icons -->
     <%= partial "partials/head/link" %>
+
+    <!-- Stylesheets -->
+    <%= partial "partials/head/css" %>
+
+    <!-- Javascripts -->
+    <%= partial "partials/head/js" %>
   </head>
   
   <body class="page <%= page_classes %>">
