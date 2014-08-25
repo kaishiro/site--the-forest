@@ -6,7 +6,7 @@ a {
     outline: 0;
   }
 
-  @include media($desktop) {
+  @include media($mq-desk) {
     &:hover {
       color: $color-text-link-hover;
     }

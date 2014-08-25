@@ -2,10 +2,10 @@ html {
   @extend %font-sans-serif-regular;
   color:#333;
   font-size:$base-font-size-px-mobile;
-  @include media($tablet) {
+  @include media($mq-lap) {
     font-size:$base-font-size-px-tablet;
   }
-  @include media($desktop) {
+  @include media($mq-desk) {
     font-size:$base-font-size-px-desktop;
   }
 }

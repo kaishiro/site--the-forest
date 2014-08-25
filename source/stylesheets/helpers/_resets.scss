@@ -35,3 +35,14 @@
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+%reset-button {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: inherit;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
