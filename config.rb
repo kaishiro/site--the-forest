@@ -1,41 +1,80 @@
-require 'redcarpet'
+##
+# config.rb
+#
+# @author   Matthew White <matt@substructu.re>
+# @date     2014-08-25
+#
+# This is the base configuration file for Middleman.
+##
 
-# Load local ENV vars, for development
+
+##
+# Requires
+##
+
+# Require any local environment variables that exist
 require './env' if File.exists?('env.rb')
 
-set :markdown_engine, :redcarpet
-activate :directory_indexes
 
-# Automatic image dimensions on image_tag helper
-activate :automatic_image_sizes
+##
+# Core Configuration
+##
 
-# Reload the browser automatically whenever files change
-activate :livereload
+# Set Environment [:development, :build]
+config[:environment] = :development
 
-helpers do
-  def markdown(source)
-    Tilt::KramdownTemplate.new { source }.render
-  end
+# Set Directories
+config[:source] = 'source'
+config[:build_dir] = '../build/www'
+config[:css_dir] = 'assets/stylesheets'
+config[:js_dir] = 'assets/javascripts'
+config[:images_dir] = 'assets/images'
+config[:fonts_dir] = 'assets/fonts'
+config[:layouts_dir] = 'layouts'
+config[:partials_dir] = 'partials'
+config[:helpers_dir] = 'helpers'
+
+# Set Default Layout
+config[:layout] = 'layout.erb'
+
+# Set Default Index
+config[:index_file] = 'index.html'
+
+# Set Markdown Engine
+config[:markdown_engine] = :kramdown
+
+# Set Miscellaneous Options
+config[:relative_links] = true
+config[:strip_index_file] = true
+config[:trailing_slash] = true
+
+
+##
+# Environment Configuration
+##
+
+# Development Environment
+configure :development do
 end
 
-set :css_dir, 'stylesheets'
-
-set :js_dir, 'javascripts'
-
-set :images_dir, 'images'
-
-# Build-specific configuration
+# Build Environment
 configure :build do
-  # Minify Javascript on build
-  # activate :minify_javascript
-
-  # Enable cache buster
-  # activate :asset_hash
-
-  # Or use a different image path
-  # set :http_prefix, "/Content/images/"
+    activate :minify_css
+    activate :minify_javascript
+    activate :asset_hash
 end
 
+
+##
+# Extensions
+##
+
+activate :directory_indexes
+activate :automatic_image_sizes
+activate :livereload
+activate :cache_buster
+
+# Amazon S3 Sync
 activate :s3_sync do |s3_sync|
   s3_sync.bucket                     = ENV['S3_BUCKET']
   s3_sync.region                     = ENV['S3_REGION']
