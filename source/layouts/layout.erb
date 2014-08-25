@@ -1,46 +1,46 @@
 <!doctype html>
 
-<%= partial "partials/html" %>
+<%= partial "html" %>
 
   <head>
     <!-- Meta -->
-    <%= partial "partials/head/meta" %>
+    <%= partial "head/meta" %>
 
     <!-- Title -->
-    <%= partial "partials/head/title" %>
+    <%= partial "head/title" %>
 
     <!-- Icons -->
-    <%= partial "partials/head/link" %>
+    <%= partial "head/link" %>
 
     <!-- Stylesheets -->
-    <%= partial "partials/head/css" %>
+    <%= partial "head/css" %>
 
     <!-- Javascripts -->
-    <%= partial "partials/head/js" %>
+    <%= partial "head/js" %>
   </head>
   
   <body class="page <%= page_classes %>">
 
     <header class="header" role="banner">
 
-      <%= partial "partials/components/toggle--navigation" %>
+      <%= partial "blocks/toggle--navigation" %>
 
-      <%= partial "partials/components/logo" %>
+      <%= partial "blocks/logo" %>
 
-      <%= partial "partials/components/toggle--search" %>
+      <%= partial "blocks/toggle--search" %>
 
-      <%= partial "partials/components/search" %>
+      <%= partial "blocks/search" %>
 
     </header>
 
-    <%= partial "partials/components/navigation--primary" %>
+    <%= partial "blocks/navigation--primary" %>
 
     <%= yield %>
 
     <footer class="footer">
     </footer>
 
-    <%= partial "partials/foot/js" %>
+    <%= partial "foot/js" %>
 
   </body>
 </html>
