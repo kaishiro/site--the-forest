@@ -1,18 +1,138 @@
-@mixin clearfix {
-  &:before,
-  &:after {
-    content: "";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
-  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+/**
+ * _mixins.scss
+ *
+ * @author    Matthew White <matt@substructu.re>
+ * @date      2014-08-26
+ *
+ * This is the core SASS mixin library.  Each particular mixin has it's own 
+ * description and usage notes below.
+ */
+
+
+/**
+ * ⌂-background
+ *
+ * Sets a solid or semi-transparent background color.  Accepts an optional 
+ * opacity (alpha) value.  Provides a solid color fallback.
+ */
+@mixin ⌂-background($color, $alpha: 1) {
+  background: $color;
+  background: rgba($color, $alpha);
 }
 
-@mixin opacity($val) {
-  opacity:$val;
-  -moz-opacity:$val;
-  -webkit-opacity:$val;
-  filter:alpha(opacity=($val * 100));
+
+/**
+ * ⌂-clear
+ *
+ * Multi-use clear mixin for various contexts.  Accepts an optional context.
+ * Default usage implements a Bourbon micro-clearfix.
+ */
+@mixin ⌂-clear($element: self) {
+
+  @if $element == self {
+    @include clearfix;
+  }
+
+  @if $element == header {
+    @include padding($height-header-palm null null null);
+
+    @include media($mq-lap) {
+      @include padding($height-header-lap null null null);
+    }
+
+    @include media($mq-desk) {
+      @include padding(0 null null null);
+    }
+  }
+}
+
+
+/**
+ * ⌂-container
+ *
+ * Declares a container around elements sized with Neat's span-columns mixin.  
+ * Accepts an optional argument - pseudo - for use on containers that cannot
+ * be margined (e.g. full screen video/imagery).
+ */
+@mixin ⌂-container($type: outer) {
+
+  @if $type == outer {
+    @include clearfix;
+    @include margin(null auto null auto);
+    width: $width-palm;
+    max-width: $width-palm-max;
+    @include media($mq-lap) {
+      width: $width-lap;
+      max-width: $width-lap-max;
+    }
+    @include media($mq-desk) {
+      width: $width-desk;
+      max-width: $width-desk-max;
+    }
+  }
+
+  @if $type == pseudo {
+    @include clearfix;
+    padding-left:2.5%;
+    padding-right:2.5%;
+  }
+}
+
+
+/**
+ * ⌂-icon
+ *
+ * Implements a webfont glyph (typically Fontello).  Needs to be used within
+ * a pseudo element (e.g. &:before, &:after).  Accepts a required, named
+ * icon, an optional size, and an optional color.  Available icons can be
+ * modified by adding directly to the $icons map stack.
+ */
+@mixin ⌂-icon($icon, $size: 16, $color: $color-text) {
+  $icons: (
+    // Contact Icons
+    mail: '\e80a',
+    facebook: '\e807',
+    twitter: '\e808',
+
+    // Form Icons
+    zip: '\e803',
+    geolocate: '\e806',
+    distance: '\e80c',
+    devices: '\e80b',
+    select: '\e80e',
+
+    // Miscellaneous Icons
+    help: '\e809',
+    info: '\e802',
+    search: '\e801',
+    settings: '\e805',
+
+    // Loaders
+    loader: '\e810'
+  );
+
+  font-family: "fontello";
+  font-size: em(strip-units($size));
+  color: $color;
+  content: map-get($icons, $icon);
+  display:inline-block;
+}
+
+
+/**
+ * ⌂-layer
+ *
+ * Sets a z-index value based on semantic naming as opposed to explicit integer
+ * values.  Accepts a required, named layer.  Hierarchy can be modified by
+ * adding directly to the $layers map stack.
+ */
+@mixin ⌂-layer($layer) {
+  $layers: (
+    roof: 3000,
+    loft: 2000,
+    ground: 1000,
+    basement: -1
+  );
+
+  z-index: map-get($layers, $layer);
 }
