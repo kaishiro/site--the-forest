@@ -13,6 +13,9 @@
 // Dependency: Typography
 @import "dependencies/typography";
 
+// Dependency: Fontello
+@import "dependencies/fontello";
+
 // Helpers
 @import "helpers/mixins";
 @import "helpers/resets";
@@ -30,3 +33,23 @@
 
 // Replace development sheet with component sheets on production prep
 @import "components/development";
+
+.header {
+
+  .header__inner {
+    @include ⌂-container;
+  }
+}
+
+.toggle {
+
+  &.toggle--navigation {
+    
+    &:before {
+      @include ⌂-icon(menu);
+    }
+  }
+
+  &.toggle--search {
+  }
+}
