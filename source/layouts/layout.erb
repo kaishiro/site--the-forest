@@ -23,13 +23,17 @@
 
     <header class="header" role="banner">
 
-      <%= partial "components/toggle--navigation" %>
+      <div class="header__inner">
 
-      <%= partial "components/logo" %>
+        <%= partial "components/toggle--navigation" %>
 
-      <%= partial "components/toggle--search" %>
+        <%= partial "components/logo" %>
 
-      <%= partial "components/search" %>
+        <%= partial "components/toggle--search" %>
+
+        <%= partial "components/search" %>
+
+      </div>
 
     </header>
 
@@ -37,7 +41,11 @@
 
     <%= yield %>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
+
+      <div class="footer__inner">
+      </div>
+
     </footer>
 
     <%= partial "foot/js" %>
