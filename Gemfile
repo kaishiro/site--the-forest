@@ -15,6 +15,9 @@ gem "middleman-s3_sync", "3.0.31"
 
 # Middleman Pagination - Allows pagination for proxy pages
 gem "middleman-pagination", "1.1.1"
+#
+# Middleman Syntax - Provides Rouge syntax highlighting
+gem "middleman-syntax", "2.0.0"
 
 # SASS - Syntactically Awesome Stylesheets Yo
 gem "sass", "3.4.1"
