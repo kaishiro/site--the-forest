@@ -1,0 +1,23 @@
+/**
+ *
+ * ⌂-button
+ *
+ * Styles an element to a site specific button.  Accepts an
+ * argument for button variants.
+ *
+ */
+@mixin ⌂-button($variant) {
+  @extend %reset-button;
+  
+  @if $variant == transparent {
+    display: inline-block;
+  }
+
+  @if $variant == red {
+    @extend %font-weight-bold;
+    @include ⌂-background($color-red, 1);
+    @include padding(1em 2em 1em 2em);
+    font-size:em(14);
+    color: $color-text-invert;
+  }
+}

@@ -1,0 +1,18 @@
+/**
+ * ⌂-rte
+ *
+ * Implements styling for (R)ich (T)ext (E)ditors.  Should be used to format
+ * the output of a CMS preformatted field.
+ *
+ */
+@mixin ⌂-rte {
+  p {
+    font-size: em(14);
+    line-height: em(24, 14);
+    @include margin(null null 1em null);
+
+    &:last-child {
+      @include margin(null null 0 null);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+/**
+ *
+ * ⌂-copy
+ *
+ * Implements standardized site copy. Accepts arguments for
+ * variants (inversions, etc.).
+ *
+ */
+@mixin ⌂-copy($variant: default) {
+  font-size: em(14);
+  line-height: em(28, 14);
+}

@@ -1,0 +1,31 @@
+/**
+ * ⌂-pattern
+ *
+ */
+@mixin ⌂-pattern($pattern, $modifier, $context) {
+
+  @if $pattern == 'tile' {
+
+    @if $modifier == 'image-left' {
+
+      @if $context == 'desk' {
+
+        @include media($mq-desk) {
+
+          .tile__image {
+            @include size(200px);
+            padding-bottom:0;
+            background-position:50% 50%;
+            display: table-cell;
+            border-bottom: none;
+            border-right: 1px solid $color-border;
+          }
+
+          .tile__content {
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
