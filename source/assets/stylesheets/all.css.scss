@@ -13,12 +13,12 @@
 // Dependency: Typography
 @import "dependencies/typography";
 
-// Dependency: Fontello
-@import "dependencies/fontello";
-
 // Helpers
 @import "helpers/mixins";
 @import "helpers/resets";
+
+// Dependency: Fontello
+@import "dependencies/fontello";
 
 // Foundational Reset
 @import "foundation/block";
