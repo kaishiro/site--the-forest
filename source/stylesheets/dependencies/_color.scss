@@ -1,11 +1,18 @@
-// Colors
+// Colors | Descriptive
 $color-black: #000000;
 $color-white: #FFFFFF;
-$color-blue: #0000FF;
-$color-grey: #666666;
+$color-blue: #003365;
+$color-grey: #6D6D6D;
 
-// Colors: Semantic
-$color-text: $color-black;
+// Colors | Theme
+$color-theme-primary: $color-blue;
+$color-theme-secondary: $color-grey;
+
+// Colors | Semantic
+$color-text: $color-theme-secondary;
 $color-text-invert: $color-white;
-$color-text-link: $color-blue;
-$color-text-link-hover: darken($color-text-link, 10%);
+$color-text-link: $color-theme-primary;
+$color-text-link-hover: darken($color-text-link, 15%);
+$color-heading: $color-theme-primary;
+$color-heading-invert: $color-white;
+
