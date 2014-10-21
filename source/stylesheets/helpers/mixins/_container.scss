@@ -8,7 +8,7 @@
 @mixin ⌂-container($type: outer) {
 
   @if $type == outer {
-    @include clearfix;
+    @include ⌂-clear;
     @include margin(null auto null auto);
     position: relative;
     width: $width-palm;
@@ -24,7 +24,8 @@
   }
 
   @if $type == pseudo {
-    @include clearfix;
+    @include ⌂-clear;
+    @include position(relative, null null null null);
     padding-left:2.5%;
     padding-right:2.5%;
   }
