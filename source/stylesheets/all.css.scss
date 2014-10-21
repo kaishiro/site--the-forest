@@ -35,18 +35,33 @@
 @import "components/development";
 
 html, body {
-  @include ⌂-background($color-grey, 1);
+  @include ⌂-background($color-white, 1);
+  @extend %font-sans-serif-book;
+  color: $color-text;
+  font-size: $base-font-size-px-mobile;
+  @include media($mq-lap) {
+    font-size: $base-font-size-px-tablet;
+  }
+  @include media($mq-desk) {
+    font-size: $base-font-size-px-desktop;
+  }
 }
 
 .header {
   @include ⌂-background($color-white, .8);
+
+  .header__inner {
+    @include position(relative, null null null null);
+  }
 }
 
 .toggle {
   @extend %reset-button;
+  @include size(2.5em 100%);
+  text-align: center;
 
   &.toggle--navigation {
-    @include position(absolute, em(5) null null em(5));
+    @include position(absolute, 0 null null 0);
     
     &:before {
       @include ⌂-icon(menu, 24);
@@ -54,7 +69,7 @@ html, body {
   }
 
   &.toggle--search {
-    @include position(absolute, em(5) em(5) null null);
+    @include position(absolute, 0 0 null null);
 
     &:before {
       @include ⌂-icon(search, 24);
@@ -63,6 +78,31 @@ html, body {
 }
 
 .logo {
-  @include transition(all 1s linear);
-  color: purple;
+  @include position(relative, null null null null);
+  @include margin(null auto null auto);
+  @include padding(.5em null .5em null);
+  width: 50%;
+
+  .logo__heading {
+    display: none;
+  }
+
+  .logo__image {
+    display: block;
+    @include position(relative, null null null null);
+    @include size(null auto);
+    @include margin(null auto null auto);
+    max-width: 100%;
+  }
+}
+
+.search {
+  display: none;
+}
+
+.navigation {
+
+  &.navigation--primary {
+    @include ⌂-pattern(navigation, impact);
+  }
 }
