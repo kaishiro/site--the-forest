@@ -34,22 +34,35 @@
 // Replace development sheet with component sheets on production prep
 @import "components/development";
 
-.header {
+html, body {
+  @include ⌂-background($color-grey, 1);
+}
 
-  .header__inner {
-    @include ⌂-container;
-  }
+.header {
+  @include ⌂-background($color-white, .8);
 }
 
 .toggle {
+  @extend %reset-button;
 
   &.toggle--navigation {
+    @include position(absolute, em(5) null null em(5));
     
     &:before {
-      @include ⌂-icon(menu);
+      @include ⌂-icon(menu, 24);
     }
   }
 
   &.toggle--search {
+    @include position(absolute, em(5) em(5) null null);
+
+    &:before {
+      @include ⌂-icon(search, 24);
+    }
   }
+}
+
+.logo {
+  @include transition(all 1s linear);
+  color: purple;
 }
