@@ -1,52 +1,70 @@
 (function () {
 
-  'use strict'
+  "use strict"
 
   var n;
 
   $(document).ready(function () {
 
-    n.Toggle.listeners();
+    n.toggle.listeners();
 
   }),
 
   n = {
 
-    Toggle: {
+    toggle: {
 
       listeners: function() {
-        $('.toggle').on('click', n.Toggle.toggle_component);
+        $(".toggle").on("click", n.toggle.toggle_states);
       },
 
-      toggle_component: function(e) {
-        var ariaPressed = $(this).attr('aria-pressed');
-        var activate = $(this).data('activate').split(" ");
-        var deactivate = $(this).data('deactivate').split(" ");
+      toggle_states: function(e) {
+        var activate = $(this).data("activate").split(" ");
+        var deactivate = $(this).data("deactivate").split(" ");
 
-        // Toggle ARIA Role
-        if (ariaPressed == 'true') {
-          $(this).attr('aria-pressed', 'false');
-        }
-        else {
-          $(this).attr('aria-pressed', 'true');
-        }
-
-        // Activate Components
+        // Toggle Activated States
         for (var i=0, l=activate.length; i<l; i++) {
-          if ($('.page.active--' + activate[i]).length) {
-            $('.page').removeClass('active--' + activate[i]);
+
+          var toggle = $(".toggle.toggle--" + activate[i]);
+          var state = activate[i];
+
+          if ($(".page.active--" + activate[i]).length) {
+            deactivateAriaPressed( toggle );
+            deactivatePageState( state );
           }
           else {
-            $('.page').addClass('active--' + activate[i]);
+            activateAriaPressed( toggle );
+            activatePageState( state );
           }
         }
 
-        // Deactivate Components
+        // Toggle Deactivated States
         for (var i=0, l=deactivate.length; i<l; i++) {
-          $('.page').removeClass('active--' + deactivate[i]);
+
+          var toggle = $(".toggle.toggle--" + deactivate[i]);
+          var state = deactivate[i];
+          
+          deactivateAriaPressed( toggle );
+          deactivatePageState( state );
+        }
+
+        // Utility Functions
+        function activateAriaPressed( toggle ) {
+          toggle.attr("aria-pressed", "true");
+        }
+
+        function deactivateAriaPressed( toggle ) {
+          toggle.attr("aria-pressed", "false");
+        }
+
+        function activatePageState( state ) {
+          $(".page").addClass("active--" + state);
+        }
+
+        function deactivatePageState( state ) {
+          $(".page").removeClass("active--" + state);
         }
       }
     }
   }
-
 }(jQuery));
