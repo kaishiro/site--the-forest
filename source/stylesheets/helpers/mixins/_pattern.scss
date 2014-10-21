@@ -2,7 +2,66 @@
  * ⌂-pattern
  *
  */
-@mixin ⌂-pattern($pattern, $modifier, $context) {
+@mixin ⌂-pattern($pattern, $modifier, $context: all) {
+
+  @if $pattern == 'navigation' {
+
+    @if $modifier == 'impact' {
+
+      @if $context == 'all' {
+
+        @include position(fixed, 0 0 0 0);
+        @include padding($height-header-palm null null null);
+        @include transition(transform 500ms $ease-in-out-quint);
+        @include transform(translateY(-125%));
+        @include ⌂-background($color-black, .8);
+        @include ⌂-layer(loft);
+
+        .navigation__row {
+          @include padding(2.5em null null null);
+        }
+
+        .navigation__link {
+          display: block;
+          @include padding(.25em 0 .25em 0);
+          @include ⌂-font(sans-serif, bold, $color-text-invert);
+          text-transform: uppercase;
+          text-align: center;
+          font-size: em(26);
+
+          &:hover {
+            color: $color-theme-primary;
+          }
+        }
+
+        @include media($mq-lap) {
+
+          @include padding($height-header-lap null null null);
+
+          .navigation__row {
+            @include padding(5em null null null);
+          }
+
+          .navigation__link {
+            font-size:em(32);
+          }
+        }
+
+        @include media($mq-desk) {
+
+          @include padding($height-header-desk null null null);
+
+          .navigation__row {
+            @include padding(7.5em null null null);
+          }
+
+          .navigation__link {
+            font-size:em(38);
+          }
+        }
+      }
+    }
+  }
 
   @if $pattern == 'tile' {
 
