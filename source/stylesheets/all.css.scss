@@ -32,13 +32,15 @@
 @import "foundation/tables";
 
 // Replace development sheet with component sheets on production prep
+@import "components/navigation--primary";
 @import "components/development";
 
 html, body {
-  @include ⌂-background($color-white, 1);
+  background: url('/images/bg.png');
   @extend %font-sans-serif-book;
   color: $color-text;
   font-size: $base-font-size-px-mobile;
+  @include size(null 100%);
   @include media($mq-lap) {
     font-size: $base-font-size-px-tablet;
   }
@@ -46,63 +48,26 @@ html, body {
     font-size: $base-font-size-px-desktop;
   }
 }
-
-.header {
-  @include ⌂-background($color-white, .8);
-
-  .header__inner {
-    @include position(relative, null null null null);
-  }
+.forest {
+  @include ⌂-container;
+  @include margin(2.5em null 2.5em null);
 }
 
-.toggle {
-  @extend %reset-button;
-  @include size(2.5em 100%);
+.tree {
+  @include span-columns(12);
+  @include ⌂-background($color-white, .5);
+  line-height: 1.5;
+  @include padding(.5em 1em);
   text-align: center;
 
-  &.toggle--navigation {
-    @include position(absolute, 0 null null 0);
-    
-    &:before {
-      @include ⌂-icon(menu, 24);
-    }
-  }
-
-  &.toggle--search {
-    @include position(absolute, 0 0 null null);
-
-    &:before {
-      @include ⌂-icon(search, 24);
-    }
-  }
-}
-
-.logo {
-  @include position(relative, null null null null);
-  @include margin(null auto null auto);
-  @include padding(.5em null .5em null);
-  width: 50%;
-
-  .logo__heading {
-    display: none;
-  }
-
-  .logo__image {
+  .tree__timestamp {
     display: block;
-    @include position(relative, null null null null);
-    @include size(null auto);
-    @include margin(null auto null auto);
-    max-width: 100%;
+    font-size: em(7);
+    color:lighten($color-text, 35%);
   }
-}
 
-.search {
-  display: none;
-}
-
-.navigation {
-
-  &.navigation--primary {
-    @include ⌂-pattern(navigation, impact);
+  @include media($mq-lap) {
+    @include span-columns(6);
+    @include shift(3);
   }
 }

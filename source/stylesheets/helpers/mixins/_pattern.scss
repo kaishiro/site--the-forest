@@ -8,60 +8,222 @@
 
     @if $modifier == 'impact' {
 
-      @if $context == 'all' {
+      @if $context == 'global' {
 
-        @include position(fixed, 0 0 0 0);
-        @include padding($height-header-palm null null null);
-        @include transition(transform 500ms $ease-in-out-quint);
-        @include transform(translateY(-125%));
-        @include ⌂-background($color-black, .8);
-        @include ⌂-layer(loft);
+        // Pattern
+        .navigation {
 
-        .navigation__row {
-          @include padding(2.5em null null null);
-        }
+          &.navigation--primary {
+            @include position(absolute, null null null null);
+            @include transition(transform 500ms $ease-in-out-quint);
+            @include transform(translateY(-100%));
+            @include ⌂-background($color-black, .8);
+            @include ⌂-layer(loft);
+            @include ⌂-clear();
 
-        .navigation__link {
-          display: block;
-          @include padding(.25em 0 .25em 0);
-          @include ⌂-font(sans-serif, bold, $color-text-invert);
-          text-transform: uppercase;
-          text-align: center;
-          font-size: em(26);
+            .navigation__row {
+            }
 
-          &:hover {
-            color: $color-theme-primary;
+            .navigation__link {
+              display: block;
+              @include ⌂-font(sans-serif, bold, $color-text-invert);
+              text-transform: uppercase;
+              text-align: center;
+              font-size: em(26);
+
+              &:hover {
+                color: $color-theme-primary;
+              }
+            }
+
+            @include media($mq-lap) {
+
+              .navigation__row {
+              }
+
+              .navigation__link {
+                font-size:em(32);
+              }
+            }
+
+            @include media($mq-desk) {
+
+              .navigation__row {
+              }
+
+              .navigation__link {
+                font-size:em(38);
+              }
+            }
           }
         }
 
-        @include media($mq-lap) {
+        // States
+        .page {
 
-          @include padding($height-header-lap null null null);
-
-          .navigation__row {
-            @include padding(5em null null null);
-          }
-
-          .navigation__link {
-            font-size:em(32);
-          }
-        }
-
-        @include media($mq-desk) {
-
-          @include padding($height-header-desk null null null);
-
-          .navigation__row {
-            @include padding(7.5em null null null);
-          }
-
-          .navigation__link {
-            font-size:em(38);
+          &.active--navigation {
+            @include transform(translateY(0%));
           }
         }
       }
     }
+
+    @if $modifier == "rightSlide" {
+
+      .navigation {
+
+        &.navigation--primary {
+
+
+        }
+      }
+    }
   }
+
+  @if $pattern == "toggle" {
+
+    @if $modifier == "right" {
+
+      @if $context == "all" {
+
+        @include position(absolute, 0 0 null null);
+      }
+    }
+
+    @if $modifier == "right--1" {
+
+      @if $context == "all" {
+
+        @include position(absolute, 0 2.5em null null);
+      }
+    }
+
+    @if $modifier == "left" {
+
+      @if $context == "all" {
+
+        @include position(absolute, 0 null null 0);
+      }
+    }
+  }
+
+  @if $pattern == "header" {
+
+    @if $modifier == "default" {
+
+      @if $context == "all" {
+
+        @include position(relative, null null null null);
+        @include ⌂-layer(loft);
+
+        .header__inner {
+          @include position(relative, null null null null);
+        }
+      }
+    }
+
+    @if $modifier == "fixed" {
+
+      @if $context == "all" {
+
+        @include position(fixed, null null null null);
+        @include size(100% null);
+        @include ⌂-layer(loft);
+
+        .header__inner {
+          @include position(relative, null null null null);
+        }
+      }
+    }
+  }
+
+  @if $pattern == "main" {
+
+    @if $modifier == "default" {
+
+      @include position(relative, null null null null);
+      @include ⌂-layer(ground);
+    }
+  }
+
+  @if $pattern == "footer" {
+
+    @if $modifier == "default" {
+
+      @include position(relative, null null null null);
+      @include ⌂-layer(ground);
+    }
+  }
+
+  @if $pattern == "slide" {
+
+    @if $modifier == "no-cta" {
+
+      .slide__cta {
+        display: none;
+      }
+    }
+
+    @if $modifier == "ltr" {
+
+      @include media($mq-lap) {
+
+        .slide__heading {
+          @include span-columns(6);
+        }
+
+        .slide__subheading {
+          @include span-columns(6);
+          clear: left;
+        }
+
+        .slide__copy {
+          @include span-columns(6);
+          clear: left;
+        }
+
+        .slide__cta {
+          float: left;
+          clear: left;
+        }
+      }
+    }
+
+    @if $modifier == "rtl" {
+
+      @include media($mq-lap) {
+
+        .slide__heading {
+          @include span-columns(6);
+          @include shift(6);
+        }
+
+        .slide__subheading {
+          @include span-columns(6);
+          @include shift(6);
+          clear: left;
+        }
+
+        .slide__copy {
+          @include span-columns(6);
+          @include shift(6);
+          clear: left;
+        }
+
+        .slide__cta {
+          float: left;
+          @include shift(6);
+          clear: left;
+        }
+      }
+    }
+  }
+
+
+
+
+
+
 
   @if $pattern == 'tile' {
 

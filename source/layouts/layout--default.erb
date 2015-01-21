@@ -1,7 +1,6 @@
 <% wrap_layout :layout do %>
 
-  <main class="main" role="main">
-    Layout: Default
+  <main class="main layout layout--<%= current_page.data.layout_class %>" role="main">
     <%= yield %>
   </main>
 

@@ -1,8 +1,24 @@
 <div class="scripts">
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/assets/javascripts/libs/jquery/1.11.1/jquery.min.js"><\/script>')</script>
   <%= javascript_include_tag  "all" %>
   <%= javascript_include_tag  "toggle" %>
   <%= javascript_include_tag  "search" %>
   <%= yield_content :javascripts %>
+
+  <script>
+    var ref = new Firebase('https://convenient-magpie.firebaseio.com/seeds');
+
+    ref.on('child_added', function (snapshot) {
+      var seed = snapshot.val();
+      growTrees(seed.body, seed.date_created);
+    }, function (errorObject) {
+      console.log('The read failed: ' + errorObject.code);
+    });
+    
+    function growTrees(body, timestamp) {
+      $('.forest').prepend("<li class='forest__tree tree'><span class='tree__body'>" + body + "</span><time class='tree__timestamp'>" + timestamp + "</time></li>");
+    };
+  </script>
 </div>

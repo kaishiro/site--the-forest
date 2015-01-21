@@ -1,0 +1,11 @@
+navigation:
+  - title: About
+    link: /about
+  - title: Blog
+    link: /blog
+  - title: News
+    link: /news
+  - title: Contact
+    link: /contact
+  - title: Jobs
+    link: /jobs
